@@ -4,7 +4,7 @@ title: "[SUBMISSION] Website Name"
 labels: ["submission"]
 
 body:
-    - type: input
+  - type: input
     id: website
     attributes:
       label: Website URL
@@ -12,11 +12,11 @@ body:
     validations:
       required: true
 
-      - type: input
+  - type: input
     id: rating
     attributes:
       label: Mature Content
-      placeholder: NSFW or SFW
+      placeholder: SFW or NSFW
     validations:
       required: true
 
@@ -40,4 +40,6 @@ body:
     id: description
     attributes:
       label: Description or Type
-      placeholder: Tell us about your site/niche.
+      placeholder: Tell us about your site or niche.
+    validations:
+      required: true
