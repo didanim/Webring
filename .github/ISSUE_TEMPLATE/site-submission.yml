@@ -1,0 +1,43 @@
+name: Site Submission
+description: Submit your website to the webring.
+title: "[SUBMISSION] Website Name"
+labels: ["submission"]
+
+body:
+  - type: input
+    id: sitename
+    attributes:
+      label: Website Name
+      placeholder: My Blog
+    validations:
+      required: true
+
+  - type: input
+    id: website
+    attributes:
+      label: Website URL
+      placeholder: https://yoursite.com/
+    validations:
+      required: true
+
+  - type: input
+    id: image
+    attributes:
+      label: Banner Image/GIF URL
+      placeholder: https://yoursite.com/banner.png
+    validations:
+      required: true
+
+  - type: input
+    id: widgetpage
+    attributes:
+      label: Page Containing Widget
+      placeholder: https://yoursite.com/
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      placeholder: Tell us about your site/niche.
