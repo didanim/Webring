@@ -31,7 +31,7 @@ body:
   - type: input
     id: widgetpage
     attributes:
-      label: Page Containing Widget
+      label: Page where the widget is embedded
       placeholder: https://yoursite.com/
     validations:
       required: true
