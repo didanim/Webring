@@ -13,7 +13,7 @@ body:
       required: true
 
       - type: input
-    id: sitename
+    id: rating
     attributes:
       label: Mature Content
       placeholder: NSFW or SFW
@@ -39,5 +39,5 @@ body:
   - type: textarea
     id: description
     attributes:
-      label: Description/Type
+      label: Description or Type
       placeholder: Tell us about your site/niche.
