@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Webring</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+  <style>* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #dae0e6;
+  font-family: Arial, sans-serif;
+  color: #1c1c1c;
+}
+
+/* Top Bar */
+
+.topbar {
+  background: white;
+  border-bottom: 1px solid #ccc;
+  padding: 14px 20px;
+  position: sticky;
+  top: 0;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  color: #ff4500;
+}
+
+/* Layout */
+
+.layout {
+  max-width: 1200px;
+  margin: 20px auto;
+  display: flex;
+  gap: 20px;
+  padding: 0 15px;
+}
+
+.content {
+  flex: 1;
+}
+
+.sidebar {
+  width: 320px;
+}
+
+/* Reddit Cards */
+
+.card {
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 18px;
+  margin-bottom: 15px;
+}
+
+.card h1,
+.card h2,
+.card h3 {
+  margin-top: 0;
+}
+
+/* Widget Preview */
+
+.preview {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.preview iframe {
+  border: none;
+}
+
+/* Join Button */
+
+.join-btn {
+  display: block;
+  text-align: center;
+  background: #ff4500;
+  color: white;
+  text-decoration: none;
+  padding: 12px;
+  border-radius: 999px;
+  font-weight: bold;
+}
+
+.join-btn:hover {
+  opacity: 0.9;
+}
+
+/* Mobile */
+
+@media (max-width: 800px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+  }
+}</style>
+<body>
+
+<header class="topbar">
+  <div class="logo">Webring by Dida</div>
+</header>
+
+<div class="layout">
+
+  <main class="content">
+
+    <div class="card">
+      <h1>Welcome to Webring</h1>
+      <p>
+        A rotating webring for indie personal websites. Join the network
+        and help fellow webmasters discover each other's sites.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>How It Works</h2>
+
+      <ol>
+        <li>Submit your website and square banner.</li>
+        <li>Wait for approval.</li>
+        <li>Embed the widget on your site.</li>
+        <li>Your website joins the rotation.</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h2>Widget Preview</h2>
+
+      <div class="preview">
+        <iframe src="widget.html" width="180" height="180"></iframe>
+        <code><iframe src="widget.html" width="180" height="180"></iframe></code>
+
+        <iframe src="widget.html" width="90" height="90"></iframe>
+        <code><iframe src="widget.html" width="90" height="90"></iframe></code>
+      </div>
+    </div>
+
+  </main>
+
+  <aside class="sidebar">
+
+    <div class="card">
+      <h3>About</h3>
+
+      <p>
+        This project works like a mini ad exchange for personal websites.
+        Every approved site gets shown throughout the network.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Requirements</h3>
+
+      <ul>
+        <li>Square image</li>
+        <li>180×180 to 360×360</li>
+        <li>Maximum 1MB</li>
+        <li>Widget must be embedded</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <a class="join-btn" href="submit.html">
+        Submit Website
+      </a>
+    </div>
+
+  </aside>
+
+</div>
+
+</body>
+</html>
