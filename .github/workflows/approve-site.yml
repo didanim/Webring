@@ -1,0 +1,35 @@
+name: Approve Site
+
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  update-json:
+    if: github.event.label.name == 'approved'
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Extract issue body
+        run: |
+          echo '${{ github.event.issue.body }}' > issue.txt
+
+      - name: Update sites.json
+        run: |
+          python .github/scripts/add_site.py
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+
+          git add sites.json
+
+          git commit -m "Add approved site"
+
+          git push
