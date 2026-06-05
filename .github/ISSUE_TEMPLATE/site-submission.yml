@@ -4,19 +4,19 @@ title: "[SUBMISSION] Website Name"
 labels: ["submission"]
 
 body:
-  - type: input
-    id: sitename
-    attributes:
-      label: Website Name
-      placeholder: My Blog
-    validations:
-      required: true
-
-  - type: input
+    - type: input
     id: website
     attributes:
       label: Website URL
       placeholder: https://yoursite.com/
+    validations:
+      required: true
+
+      - type: input
+    id: sitename
+    attributes:
+      label: Mature Content
+      placeholder: NSFW or SFW
     validations:
       required: true
 
@@ -39,5 +39,5 @@ body:
   - type: textarea
     id: description
     attributes:
-      label: Description
+      label: Description/Type
       placeholder: Tell us about your site/niche.
