@@ -60,4 +60,4 @@ You can replace `width=180` or `height=180` to your liking.
 
 ---
 
-Made with ❤️ for the Indie Web.
+Made with ❤️ by Dida.
