@@ -144,13 +144,12 @@ function render() {
 
     const member = members[current];
 
-    const link =
-        document.getElementById("siteLink");
+    const link = document.getElementById("siteLink");
 
     link.href = member.url;
 
     link.style.backgroundImage =
-        `url('${member.image}')`;
+      `url('assets/flavor/${member.flavor}.png')`;
 }
 
 function randomSite() {
