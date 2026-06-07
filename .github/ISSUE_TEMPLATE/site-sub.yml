@@ -41,12 +41,12 @@ body:
     attributes:
       label: Choose Your Samyang Flavor
       options:
-        - Original Spicy Ramen
+        - Original Spicy Ramen (Black)
         - Carbonara
         - Cheese
         - Quattro Cheese
         - Curry
-        - Hot Chicken Flavor Ramen
+        - Hot Chicken Flavor Ramen (Red)
         - Swicy
     validations:
       required: true
