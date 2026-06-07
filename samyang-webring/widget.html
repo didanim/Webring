@@ -4,92 +4,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Samyang Lovers Webring</title>
-  <style>html,
-body{
-    margin:0;
-    padding:0;
-    width:100%;
-    height:100%;
-    font-family:monospace;
-}
-
-.webring{
-    width:100%;
-    height:100%;
-
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-
-    box-sizing:border-box;
-    padding:8px;
-}
-
-.viewer{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    width:100%;
-    gap:8px;
-}
-
-.site-thumb{
-    width:min(90px,50vw);
-    aspect-ratio:1;
-
-    background-size:cover;
-    background-position:center;
-
-    border:2px solid #000;
-
-    transform:rotate(-4deg);
-
-    image-rendering:pixelated;
-
-    display:block;
-}
-
-.arrow{
-    width:24px;
-    height:24px;
-
-    border:none;
-    cursor:pointer;
-
-    background:transparent;
-    background-size:contain;
-    background-repeat:no-repeat;
-    background-position:center;
-}
-
-#prev{
-    background-image:url("assets/arrows/arrow-previous.png");
-}
-
-#next{
-    background-image:url("assets/arrows/arrow-next.png");
-}
-
-.random{
-    margin-top:8px;
-    background:none;
-    border:none;
-    cursor:pointer;
-    font-family:inherit;
-    text-decoration:underline;
-}
-
-.title{
-    margin-top:6px;
-    text-align:center;
-}
-
-.about{
-    margin-top:4px;
-    color:inherit;
-    font-size:12px;
-}</style>
+  <style>html,body{margin:0;padding:0;width:100%;height:100%;font-family:monospace;}.webring{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;box-sizing:border-box;padding:8px;}.viewer{display:flex;align-items:center;justify-content:center;width:100%;gap:8px;}.site-thumb{width:min(90px,50vw);aspect-ratio:1;background-size:cover;background-position:center;transform:rotate(-4deg);image-rendering:pixelated;display:block;}.arrow{width:24px;height:24px;border:none;cursor:pointer;background:transparent;background-size:contain;background-repeat:no-repeat;background-position:center;}#prev{background-image:url("assets/arrows/arrow-previous.png");}#next{background-image:url("assets/arrows/arrow-next.png");}.random{margin-top:8px;background:none;border:none;cursor:pointer;font-family:inherit;text-decoration:underline;}.title{margin-top:6px;text-align:center;}.about{margin-top:4px;color:inherit;font-size:12px;}</style>
   </head>
 <body>
   <div class="webring">
@@ -124,70 +39,8 @@ body{
     </a>
 
 </div>
-  <script>let members = [];
-let current = 0;
-
-fetch("members.json")
-.then(r => r.json())
-.then(data => {
-
-    members = data;
-
-    randomSite();
-
-    setInterval(() => {
-        randomSite();
-    },30000);
-});
-
-function render() {
-
-    const member = members[current];
-
-    const link = document.getElementById("siteLink");
-
-    link.href = member.url;
-
-    link.style.backgroundImage =
-      `url('assets/flavor/${member.flavor}.png')`;
-}
-
-function randomSite() {
-
-    current =
-        Math.floor(
-            Math.random() * members.length
-        );
-
-    render();
-}
-
-document
-.getElementById("randomBtn")
-.addEventListener("click", randomSite);
-
-document
-.getElementById("prev")
-.addEventListener("click", () => {
-
-    current--;
-
-    if(current < 0)
-        current = members.length - 1;
-
-    render();
-});
-
-document
-.getElementById("next")
-.addEventListener("click", () => {
-
-    current++;
-
-    if(current >= members.length)
-        current = 0;
-
-    render();
-});</script>
+  <script>
+    function _0x45bf(_0x3b3522,_0x351118){_0x3b3522=_0x3b3522-(-0xfc1+0x2a5*0x2+-0x1*-0xb7b);const _0x4e1e21=_0xafe7();let _0x56a9e8=_0x4e1e21[_0x3b3522];return _0x56a9e8;}const _0x403688=_0x45bf;(function(_0x161985,_0x3bf346){const _0x116b5e=_0x45bf,_0x2d99aa=_0x161985();while(!![]){try{const _0x1bba9f=parseInt(_0x116b5e(0x131))/(-0xd4+0x1f68+-0x1e93)+parseInt(_0x116b5e(0x106))/(-0x205e+-0x1*-0xec3+0x119d)*(-parseInt(_0x116b5e(0x12d))/(0x21f*-0x7+-0x1454*-0x1+-0x578))+-parseInt(_0x116b5e(0x118))/(-0x55c+-0x1ef3+0x2453)*(-parseInt(_0x116b5e(0x10b))/(0x826+0x5*0x74b+0x2c98*-0x1))+-parseInt(_0x116b5e(0x11f))/(0x2*-0xf1+0x24bb*-0x1+0x26a3)*(-parseInt(_0x116b5e(0x121))/(0x1*0x72d+0x994+0x10ba*-0x1))+-parseInt(_0x116b5e(0x105))/(-0x18e2+0x2*0xc15+0xc0)+parseInt(_0x116b5e(0x113))/(-0x1*0x1917+0xc6d+0xcb3)*(-parseInt(_0x116b5e(0x11a))/(0x15fc+-0x2*-0x1325+-0x3c3c))+parseInt(_0x116b5e(0x127))/(-0x632+-0x1*-0x1075+-0x368*0x3)*(parseInt(_0x116b5e(0x114))/(0x4*-0x8ee+-0xee1+0x32a5*0x1));if(_0x1bba9f===_0x3bf346)break;else _0x2d99aa['push'](_0x2d99aa['shift']());}catch(_0xeef991){_0x2d99aa['push'](_0x2d99aa['shift']());}}}(_0xafe7,-0x3f485+0x86ed0+0x6a01d));let members=[],current=0xd54+-0x22f6+-0x39b*-0x6;function _0xafe7(){const _0x4b073f=['ById','siteLink','next','8xwioxZ','stener','6446460tMAZVF','href','Image','url','then','48rYDjQE','sdbFw','1226477ygtQiR','randomBtn','WImNr','aNFoM','getElement','style','11784751cKLhor','json','flavor','yNWXr','url(\x27asset','.png\x27)','3VPvhhu','JmMIK','tbkrZ','members.js','535424oOqzkI','BRuUC','6430480ioWxuC','2467702IlqrIA','length','random','uQTaL','prev','1003775xYWIxc','YXuPC','click','jkgna','s/flavor/','floor','background','addEventLi','9LhaGDt','12ixFkOr'];_0xafe7=function(){return _0x4b073f;};return _0xafe7();}fetch(_0x403688(0x130)+'on')[_0x403688(0x11e)](_0x21349c=>_0x21349c[_0x403688(0x128)]())[_0x403688(0x11e)](_0x30559f=>{const _0x329d32=_0x403688,_0x5d94a0={'uQTaL':function(_0x1b1431){return _0x1b1431();},'WImNr':function(_0xab904a,_0x57f9eb,_0x3a16dd){return _0xab904a(_0x57f9eb,_0x3a16dd);}};members=_0x30559f,_0x5d94a0[_0x329d32(0x109)](randomSite),_0x5d94a0[_0x329d32(0x123)](setInterval,()=>{const _0x111bed=_0x329d32;_0x5d94a0[_0x111bed(0x109)](randomSite);},-0x1d89*-0x7+0x2913+-0x82a2);});function render(){const _0x39519f=_0x403688,_0x54f514={'YXuPC':_0x39519f(0x116)},_0x53891e=members[current],_0x3e0212=document[_0x39519f(0x125)+_0x39519f(0x115)](_0x54f514[_0x39519f(0x10c)]);_0x3e0212[_0x39519f(0x11b)]=_0x53891e[_0x39519f(0x11d)],_0x3e0212[_0x39519f(0x126)][_0x39519f(0x111)+_0x39519f(0x11c)]=_0x39519f(0x12b)+_0x39519f(0x10f)+_0x53891e[_0x39519f(0x129)]+_0x39519f(0x12c);}function randomSite(){const _0x57ea74=_0x403688,_0x13b254={'aNFoM':function(_0x1ae1be,_0xfa4bca){return _0x1ae1be*_0xfa4bca;},'BRuUC':function(_0x14d596){return _0x14d596();}};current=Math[_0x57ea74(0x110)](_0x13b254[_0x57ea74(0x124)](Math[_0x57ea74(0x108)](),members[_0x57ea74(0x107)])),_0x13b254[_0x57ea74(0x104)](render);}document[_0x403688(0x125)+_0x403688(0x115)](_0x403688(0x122))[_0x403688(0x112)+_0x403688(0x119)](_0x403688(0x10d),randomSite),document[_0x403688(0x125)+_0x403688(0x115)](_0x403688(0x10a))[_0x403688(0x112)+_0x403688(0x119)](_0x403688(0x10d),()=>{const _0xdcc5bb=_0x403688,_0x4e81fb={'jkgna':function(_0x2612d9,_0x1615fd){return _0x2612d9<_0x1615fd;},'tbkrZ':function(_0x4f5ee7,_0x199d18){return _0x4f5ee7-_0x199d18;},'yNWXr':function(_0x24e3a5){return _0x24e3a5();}};current--;if(_0x4e81fb[_0xdcc5bb(0x10e)](current,-0x184f+0x13d1+-0x23f*-0x2))current=_0x4e81fb[_0xdcc5bb(0x12f)](members[_0xdcc5bb(0x107)],0xf4c*-0x2+-0x125e+0x1*0x30f7);_0x4e81fb[_0xdcc5bb(0x12a)](render);}),document[_0x403688(0x125)+_0x403688(0x115)](_0x403688(0x117))[_0x403688(0x112)+_0x403688(0x119)](_0x403688(0x10d),()=>{const _0x4fe9e5=_0x403688,_0x346686={'sdbFw':function(_0x49362f,_0x2571c5){return _0x49362f>=_0x2571c5;},'JmMIK':function(_0x478425){return _0x478425();}};current++;if(_0x346686[_0x4fe9e5(0x120)](current,members[_0x4fe9e5(0x107)]))current=-0x2*-0x1139+0x12f*-0x1+-0x2143;_0x346686[_0x4fe9e5(0x12e)](render);});
+  </script>
   </body>
 </html>
