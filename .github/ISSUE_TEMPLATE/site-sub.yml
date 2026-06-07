@@ -1,0 +1,60 @@
+name: Join Samyang Webring
+description: Submit your website to the webring.
+title: "[SUBMISSION] Website Name"
+labels: ["submission"]
+
+body:
+  - type: input
+    id: website
+    attributes:
+      label: Website URL
+      placeholder: https://yoursite.com/
+    validations:
+      required: true
+
+  - type: input
+    id: rating
+    attributes:
+      label: Mature Content
+      placeholder: SFW or NSFW
+    validations:
+      required: true
+
+  - type: input
+    id: image
+    attributes:
+      label: Banner Image/GIF URL
+      placeholder: https://yoursite.com/banner.png
+    validations:
+      required: true
+
+  - type: input
+    id: widgetpage
+    attributes:
+      label: Page where the widget is embedded
+      placeholder: https://yoursite.com/
+    validations:
+      required: true
+
+   - type: dropdown
+    id: flavor
+    attributes:
+      label: Choose Your Samyang Flavor
+      options:
+        - Original Spicy Ramen (Black)
+        - Carbonara
+        - Cheese
+        - Quattro Cheese
+        - Curry
+        - Hot Chicken Flavor Ramen (Red)
+        - Swicy
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description or Type
+      placeholder: Tell us about your site or niche.
+    validations:
+      required: true
