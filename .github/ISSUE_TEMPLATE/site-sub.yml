@@ -23,8 +23,8 @@ body:
   - type: input
     id: image
     attributes:
-      label: Banner Image/GIF URL
-      placeholder: https://yoursite.com/banner.png
+      label: Button Image/GIF URL
+      placeholder: https://yoursite.com/button.png
     validations:
       required: true
 
