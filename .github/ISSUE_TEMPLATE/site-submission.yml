@@ -8,7 +8,7 @@ body:
     id: website
     attributes:
       label: Website URL
-      placeholder: https://yoursite.com/
+      placeholder: https://yoursite.com
     validations:
       required: true
 
@@ -32,7 +32,7 @@ body:
     id: widgetpage
     attributes:
       label: Page where the widget is embedded
-      placeholder: https://yoursite.com/
+      placeholder: https://yoursite.com
     validations:
       required: true
 
