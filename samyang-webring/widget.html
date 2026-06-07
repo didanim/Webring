@@ -43,22 +43,29 @@
 
 </div>
   <script>
-    const params = new URLSearchParams(window.location.search);
+    let members = [];
+let currentMember = null;
+
+const params = new URLSearchParams(window.location.search);
 const currentSiteId = params.get("site");
-let currentMember;
 
 fetch("members.json")
-  .then(r => r.json())
+  .then(response => response.json())
   .then(data => {
 
     members = data;
 
     currentMember =
       members.find(
-        m => m.id === currentSiteId
-      );
+        member => member.id === currentSiteId
+      ) || members[0];
 
     renderCurrentSite();
+
+    startRotation();
+  })
+  .catch(error => {
+    console.error("Failed to load members.json", error);
   });
 
 function renderCurrentSite() {
@@ -66,17 +73,47 @@ function renderCurrentSite() {
   const link =
     document.getElementById("siteLink");
 
+  if (!link || !currentMember) return;
+
   link.href = currentMember.url;
 
   link.style.backgroundImage =
     `url('assets/flavors/${currentMember.flavor}.png')`;
 }
 
+function getCurrentIndex() {
+
+  return members.findIndex(
+    member => member.id === currentMember.id
+  );
+}
+
+function getPreviousMember() {
+
+  const index = getCurrentIndex();
+
+  return members[
+    (index - 1 + members.length) %
+    members.length
+  ];
+}
+
+function getNextMember() {
+
+  const index = getCurrentIndex();
+
+  return members[
+    (index + 1) %
+    members.length
+  ];
+}
+
 function getRandomMember() {
 
   let candidates =
     members.filter(
-      m => m.id !== currentMember.id
+      member =>
+        member.id !== currentMember.id
     );
 
   return candidates[
@@ -87,42 +124,64 @@ function getRandomMember() {
 }
 
 document
-.getElementById("prev")
-.addEventListener("click", () => {
+  .getElementById("prev")
+  ?.addEventListener("click", () => {
 
-  const target =
-    getRandomMember();
+    const target =
+      getPreviousMember();
 
-  window.open(
-    target.url,
-    "_blank"
-  );
-});
+    window.open(
+      target.url,
+      "_blank"
+    );
+  });
 
 document
-.getElementById("next")
-.addEventListener("click", () => {
+  .getElementById("next")
+  ?.addEventListener("click", () => {
 
-  const target =
-    getRandomMember();
+    const target =
+      getNextMember();
 
-  window.open(
-    target.url,
-    "_blank"
-  );
-});
-  document
-.getElementById("randomBtn")
-.addEventListener("click", () => {
+    window.open(
+      target.url,
+      "_blank"
+    );
+  });
 
-  const target =
-    getRandomMember();
+document
+  .getElementById("randomBtn")
+  ?.addEventListener("click", () => {
 
-  window.open(
-    target.url,
-    "_blank"
-  );
-});
+    const target =
+      getRandomMember();
+
+    window.open(
+      target.url,
+      "_blank"
+    );
+  });
+
+function startRotation() {
+
+  setInterval(() => {
+
+    const randomMember =
+      getRandomMember();
+
+    const link =
+      document.getElementById("siteLink");
+
+    if (!link) return;
+
+    link.href = randomMember.url;
+
+    link.style.backgroundImage =
+      `url('assets/flavors/${randomMember.flavor}.png')`;
+
+  }, 30000);
+
+}
   </script>
   </body>
 </html>
