@@ -1,10 +1,12 @@
 [
   {
+    "id": "itsdida",
     "name": "ItsDida",
     "url": "https://itsdida.neocities.org",
     "flavor": "carbonara"
   },
   {
+    "id": "nocturnaldiary",
     "name": "Nocturnal Diary",
     "url": "https://nocturnaldiary.neocities.org",
     "flavor": "quattrocheese"
