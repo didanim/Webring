@@ -74,7 +74,7 @@ function renderCurrentSite() {
   link.href = currentMember.url;
 
   link.style.backgroundImage =
-    `url('assets/flavors/${currentMember.flavor}.png')`;
+    `url('assets/flavor/${currentMember.flavor}.png')`;
 }
 
 function getCurrentIndex() {
@@ -157,27 +157,6 @@ document
       "_blank"
     );
   });
-
-function startRotation() {
-
-  setInterval(() => {
-
-    const randomMember =
-      getRandomMember();
-
-    const link =
-      document.getElementById("siteLink");
-
-    if (!link) return;
-
-    link.href = randomMember.url;
-
-    link.style.backgroundImage =
-      `url('assets/flavor/${randomMember.flavor}.png')`;
-
-  }, 30000);
-
-}
   </script>
   </body>
 </html>
