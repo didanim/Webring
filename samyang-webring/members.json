@@ -10,5 +10,11 @@
     "name": "Nocturnal Diary",
     "url": "https://nocturnaldiary.neocities.org",
     "flavor": "quattrocheese"
+  },
+  {
+    "id": "wwforum",
+    "name": "WW Forum",
+    "url": "https://writewhim.blogspot.com",
+    "flavor": "carbonara"
   }
 ]
