@@ -16,5 +16,11 @@
     "name": "WW Forum",
     "url": "https://writewhim.blogspot.com",
     "flavor": "carbonara"
+  },
+  {
+    "id": "crispypata",
+    "name": "Hungry Dev Blog",
+    "url": "https://crispypata.neocities.org",
+    "flavor": "carbonara"
   }
 ]
