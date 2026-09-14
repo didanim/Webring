@@ -38,12 +38,12 @@ Please provide:
 ## 🔗 Webring Widget
 
 ### NavLink Ads
-
-You can replace `width=180` or `height=180` to your liking.
+If you choose this kind of webring, please provide a banner with the requested dimensions.
 
 ```html
 <iframe frameborder='0' height='180' name='sitelinks' src='https://didanim.github.io/Webring/widget.html' width='180'></iframe>
 ```
+You can replace `width=180` or `height=180` to your liking. 
 
 ### Samyang Lovers
 Replace the `yoursitename` based on your website URL.
