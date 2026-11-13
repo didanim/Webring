@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Webring</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 600px; margin: 40px auto; padding: 0 16px; }
+    ul { line-height: 1.8; }
+  </style>
+</head>
+<body>
+  <h1>My Webring</h1>
+  <p>Widget preview:</p>
+  <iframe width="88" height="31" style="border:none" src="blogger/widget.html" name="buttonlink"></iframe>
+
+  <h2>Members</h2>
+  <ul id="member-list"></ul>
+
+  <script src="blogger/sites.js"></script>
+  <script>
+    const list = document.getElementById("member-list");
+    WEBRING_SITES.forEach(site => {
+      const li = document.createElement("li");
+      const a = document.createElement("a");
+      a.href = site.url;
+      a.textContent = site.name;
+      li.appendChild(a);
+      list.appendChild(li);
+    });
+  </script>
+</body>
+</html>
