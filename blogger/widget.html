@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Webring Widget</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    .widget {
+      display: flex;
+      width: 100%;
+      height: 100%;
+    }
+    .nav-btn {
+      width: 13px;
+      height: 31px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+     text-shadow: -1px -1px 0 #000,  1px -1px 0 #000, -1px  1px 0 #000, 1px  1px 0 #000;
+      color: #CC5500;
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: bold;
+      flex-shrink: 0;
+      user-select: none;
+    }
+    .nav-btn:hover {
+      color: #444;
+    }
+    .center-link {
+      width: 88px;
+      height: 31px;
+      display: block;
+      flex-shrink: 0;
+    }
+    .center-link div {
+      width: 88px;
+      height: 31px;
+      display: block;
+      object-fit: cover;
+      border: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="widget">
+    <a id="left-btn" class="nav-btn" href="#" target="_blank" rel="noopener nofollow" title="Random site">&#x25C0;</a>
+    <a id="home-btn" class="center-link" rel="noopener nofollow" href="#" target="_blank" title="Join the webring">
+     <div style="margin: 0px; background-size: cover; background-repeat: no-repeat; background-color: white; background-image: url('https://file.garden/ag8JwXEGxlB3Dv6B/myblogger/webring.gif');"></div>
+    </a>
+    <a rel="noopener nofollow" id="right-btn" class="nav-btn" href="#" target="_blank" title="Random site">&#x25B6;</a>
+  </div>
+
+  <script src="blogger/sites.js"></script>
+  <script>
+    const leftBtn = document.getElementById("left-btn");
+    const rightBtn = document.getElementById("right-btn");
+    const homeBtn = document.getElementById("home-btn");
+
+    homeBtn.href = WEBRING_HOME;
+
+    function pickRandomSite(excludeUrls) {
+      const pool = WEBRING_SITES.filter(site => !excludeUrls.includes(site.url));
+      const list = pool.length > 0 ? pool : WEBRING_SITES;
+      return list[Math.floor(Math.random() * list.length)];
+    }
+
+    function updateNavLinks() {
+      if (!Array.isArray(WEBRING_SITES) || WEBRING_SITES.length === 0) return;
+
+      const referrer = document.referrer || "";
+      const currentSite = WEBRING_SITES.find(site =>
+        referrer.startsWith(site.url.replace(/\/+$/, ""))
+      );
+      const exclude = currentSite ? [currentSite.url] : [];
+
+      const leftSite = pickRandomSite(exclude);
+      const rightSite = pickRandomSite([...exclude, leftSite.url]);
+
+      leftBtn.href = leftSite.url;
+      leftBtn.title = "Visit: " + leftSite.name;
+
+      rightBtn.href = rightSite.url;
+      rightBtn.title = "Visit: " + rightSite.name;
+    }
+
+    updateNavLinks();
+    setInterval(updateNavLinks, 30000);
+  </script>
+</body>
+</html>
