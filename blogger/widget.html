@@ -4,7 +4,47 @@
    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Webring Widget</title>
-  <!-- DO NOT STEAL MY WEBRING GIF (I MADE IT) -->    
+  <!-- DO NOT STEAL MY WEBRING GIF (I MADE IT) -->   
+      <style>
+    * {
+      box-sizing: border-box;
+    }
+    .widget {
+      display: flex;
+      width: 100%;
+      height: 100%;
+    }
+    .nav-btn {
+      width: 13px;
+      height: 31px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+     text-shadow: -1px -1px 0 #000,  1px -1px 0 #000, -1px  1px 0 #000, 1px  1px 0 #000;
+      color: #CC5500;
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: bold;
+      flex-shrink: 0;
+      user-select: none;
+    }
+    .nav-btn:hover {
+      color: #444;
+    }
+    .center-link {
+      width: 88px;
+      height: 31px;
+      display: block;
+      flex-shrink: 0;
+    }
+    .center-link div {
+      width: 88px;
+      height: 31px;
+      display: block;
+      object-fit: cover;
+      border: 0;
+    }
+  </style>
 </head>
 <body>
   <div class="widget">
@@ -51,45 +91,5 @@
     updateNavLinks();
     setInterval(updateNavLinks, 30000);
   </script>
-   <style>
-    * {
-      box-sizing: border-box;
-    }
-    .widget {
-      display: flex;
-      width: 100%;
-      height: 100%;
-    }
-    .nav-btn {
-      width: 13px;
-      height: 31px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-     text-shadow: -1px -1px 0 #000,  1px -1px 0 #000, -1px  1px 0 #000, 1px  1px 0 #000;
-      color: #CC5500;
-      text-decoration: none;
-      font-size: 11px;
-      font-weight: bold;
-      flex-shrink: 0;
-      user-select: none;
-    }
-    .nav-btn:hover {
-      color: #444;
-    }
-    .center-link {
-      width: 88px;
-      height: 31px;
-      display: block;
-      flex-shrink: 0;
-    }
-    .center-link div {
-      width: 88px;
-      height: 31px;
-      display: block;
-      object-fit: cover;
-      border: 0;
-    }
-  </style>
 </body>
 </html>
