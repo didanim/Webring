@@ -61,50 +61,54 @@
 </style>
 </head>
 <body>
-  <div class="widget">
-     <script src="https://didanim.github.io/Webring/blogger/sites.js"></script>
-     <div class="dd-webring">
-    <a id="left-btn" class="nav-btn" href="#" target="_blank" rel="noopener nofollow" title="Random site">&#x25C0;</a>
-    <a id="home-btn" class="center-link" rel="noopener nofollow" href="#" target="_blank" title="Member List">
-     <div style="display: block; margin: 0px; background-size: cover; background-repeat: no-repeat; background-color: white; background-image: url('https://file.garden/ag8JwXEGxlB3Dv6B/myblogger/webring.gif');"></div>
-    </a>
-    <a rel="noopener nofollow" id="right-btn" class="nav-btn" href="#" target="_blank" title="Random site">&#x25B6;</a>
-     </div
-  <script type="text/javascript">
-    const leftBtn = document.getElementById("left-btn");
-    const rightBtn = document.getElementById("right-btn");
-    const homeBtn = document.getElementById("home-btn");
+<div class="widget">
+    <div class="dd-webring">
+      <a id="left-btn" class="nav-btn" href="#" target="_blank" rel="noopener nofollow" title="Random site">&#x25C0;</a>
+      <a id="home-btn" class="center-link" rel="noopener nofollow" href="#" target="_blank" title="Blogspot Directory">
+        <div style="display: block; margin: 0px; background-size: cover; background-repeat: no-repeat; background-color: white; background-image: url('https://file.garden/ag8JwXEGxlB3Dv6B/myblogger/webring.gif');"></div>
+      </a>
+      <a rel="noopener nofollow" id="right-btn" class="nav-btn" href="#" target="_blank" title="Random site">&#x25B6;</a>
+    </div>
 
-    homeBtn.href = WEBRING_HOME;
+    <script type="text/javascript">
+      const leftBtn = document.getElementById("left-btn");
+      const rightBtn = document.getElementById("right-btn");
+      const homeBtn = document.getElementById("home-btn");
 
-    function pickRandomSite(excludeUrls) {
-      const pool = WEBRING_SITES.filter(site => !excludeUrls.includes(site.url));
-      const list = pool.length > 0 ? pool : WEBRING_SITES;
-      return list[Math.floor(Math.random() * list.length)];
-    }
+      function pickRandomSite(excludeUrls) {
+        const pool = WEBRING_SITES.filter(site => !excludeUrls.includes(site.url));
+        const list = pool.length > 0 ? pool : WEBRING_SITES;
+        return list[Math.floor(Math.random() * list.length)];
+      }
 
-    function updateNavLinks() {
-      if (!Array.isArray(WEBRING_SITES) || WEBRING_SITES.length === 0) return;
+      function updateNavLinks() {
+        if (!Array.isArray(WEBRING_SITES) || WEBRING_SITES.length === 0) return;
 
-      const referrer = document.referrer || "";
-      const currentSite = WEBRING_SITES.find(site =>
-        referrer.startsWith(site.url.replace(/\/+$/, ""))
-      );
-      const exclude = currentSite ? [currentSite.url] : [];
+        const referrer = document.referrer || "";
+        const currentSite = WEBRING_SITES.find(site =>
+          referrer.startsWith(site.url.replace(/\/+$/, ""))
+        );
+        const exclude = currentSite ? [currentSite.url] : [];
 
-      const leftSite = pickRandomSite(exclude);
-      const rightSite = pickRandomSite([...exclude, leftSite.url]);
+        const leftSite = pickRandomSite(exclude);
+        const rightSite = pickRandomSite([...exclude, leftSite.url]);
 
-      leftBtn.href = leftSite.url;
-      leftBtn.title = "Visit: " + leftSite.name;
+        leftBtn.href = leftSite.url;
+        leftBtn.title = "Visit: " + leftSite.name;
 
-      rightBtn.href = rightSite.url;
-      rightBtn.title = "Visit: " + rightSite.name;
-    }
+        rightBtn.href = rightSite.url;
+        rightBtn.title = "Visit: " + rightSite.name;
+      }
 
-    updateNavLinks();
-    setInterval(updateNavLinks, 30000);
-  </script>
+      const sitesScript = document.createElement("script");
+      sitesScript.src = "https://didanim.github.io/Webring/blogger/sites.js?t=" + Date.now();
+      sitesScript.onload = function () {
+        homeBtn.href = WEBRING_HOME;
+        updateNavLinks();
+        setInterval(updateNavLinks, 30000);
+      };
+      document.head.appendChild(sitesScript);
+    </script>
   </div>
 </body>
 </html>
