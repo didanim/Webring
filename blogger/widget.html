@@ -71,43 +71,88 @@
     </div>
 
     <script type="text/javascript">
-      const leftBtn = document.getElementById("left-btn");
-      const rightBtn = document.getElementById("right-btn");
-      const homeBtn = document.getElementById("home-btn");
+const leftBtn = document.getElementById("left-btn");
+  const rightBtn = document.getElementById("right-btn");
+  const homeBtn = document.getElementById("home-btn");
 
-      function pickRandomSite(excludeUrls) {
-        const pool = WEBRING_SITES.filter(site => !excludeUrls.includes(site.url));
-        const list = pool.length > 0 ? pool : WEBRING_SITES;
-        return list[Math.floor(Math.random() * list.length)];
-      }
+  let lastLeftNorm = "";
+  let lastRightNorm = "";
 
-      function updateNavLinks() {
-        if (!Array.isArray(WEBRING_SITES) || WEBRING_SITES.length === 0) return;
+  function normalizeUrl(url) {
+    try {
+      const u = new URL(url);
+      return (u.hostname.replace(/^www\./, "") + u.pathname.replace(/\/+$/, "")).toLowerCase();
+    } catch (e) {
+      return (url || "").replace(/^https?:\/\/(www\.)?/, "").replace(/\/+$/, "").toLowerCase();
+    }
+  }
 
-        const referrer = document.referrer || "";
-        const currentSite = WEBRING_SITES.find(site =>
-          referrer.startsWith(site.url.replace(/\/+$/, ""))
-        );
-        const exclude = currentSite ? [currentSite.url] : [];
+  function getCurrentSite() {
+    const sourceUrl =
+      document.referrer ||
+      (window.location.ancestorOrigins && window.location.ancestorOrigins[0]) ||
+      "";
+    const normSource = normalizeUrl(sourceUrl);
+    if (!normSource) return null;
 
-        const leftSite = pickRandomSite(exclude);
-        const rightSite = pickRandomSite([...exclude, leftSite.url]);
+    return WEBRING_SITES.find(site => {
+      const normSite = normalizeUrl(site.url);
+      return normSource === normSite || normSource.startsWith(normSite + "/");
+    });
+  }
 
-        leftBtn.href = leftSite.url;
-        leftBtn.title = "Visit: " + leftSite.name;
+  function pickRandomSite(strictExcludes, softExcludes = []) {
+    let pool = WEBRING_SITES.filter(site => {
+      const norm = normalizeUrl(site.url);
+      return !strictExcludes.includes(norm) && !softExcludes.includes(norm);
+    });
 
-        rightBtn.href = rightSite.url;
-        rightBtn.title = "Visit: " + rightSite.name;
-      }
+    if (pool.length === 0) {
+      pool = WEBRING_SITES.filter(site => !strictExcludes.includes(normalizeUrl(site.url)));
+    }
 
-      const sitesScript = document.createElement("script");
-      sitesScript.src = "https://didanim.github.io/Webring/blogger/sites.js?t=" + Date.now();
-      sitesScript.onload = function () {
-        homeBtn.href = WEBRING_HOME;
-        updateNavLinks();
-        setInterval(updateNavLinks, 30000);
-      };
-      document.head.appendChild(sitesScript);
+    if (pool.length === 0) {
+      pool = WEBRING_SITES;
+    }
+
+    return pool[Math.floor(Math.random() * pool.length)];
+  }
+
+  function updateNavLinks() {
+    if (!Array.isArray(WEBRING_SITES) || WEBRING_SITES.length === 0) return;
+
+    const currentSite = getCurrentSite();
+    const currentNorm = currentSite ? normalizeUrl(currentSite.url) : "";
+
+    const strictExcludes = currentNorm ? [currentNorm] : [];
+    const previousShown = [lastLeftNorm, lastRightNorm].filter(Boolean);
+
+    const leftSite = pickRandomSite(strictExcludes, previousShown);
+    const leftNorm = normalizeUrl(leftSite.url);
+
+    const rightSite = pickRandomSite([...strictExcludes, leftNorm], previousShown);
+    const rightNorm = normalizeUrl(rightSite.url);
+
+    leftBtn.href = leftSite.url;
+    leftBtn.title = "Visit: " + leftSite.name;
+    lastLeftNorm = leftNorm;
+
+    rightBtn.href = rightSite.url;
+    rightBtn.title = "Visit: " + rightSite.name;
+    lastRightNorm = rightNorm;
+  }
+
+  leftBtn.addEventListener("click", () => setTimeout(updateNavLinks, 100));
+  rightBtn.addEventListener("click", () => setTimeout(updateNavLinks, 100));
+
+  const sitesScript = document.createElement("script");
+  sitesScript.src = "https://didanim.github.io/Webring/blogger/sites.js?t=" + Date.now();
+  sitesScript.onload = function () {
+    homeBtn.href = WEBRING_HOME;
+    updateNavLinks();
+    setInterval(updateNavLinks, 30000);
+  };
+  document.head.appendChild(sitesScript);
     </script>
   </div>
 </body>
